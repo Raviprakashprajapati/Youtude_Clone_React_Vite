@@ -1,0 +1,41 @@
+.FAQ__accordian {
+    border: 1px solid #ccc;
+    /* margin: 5px; */
+  }
+  
+  .FAQ__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .FAQ__title.open {
+    background-color: #ddd;
+  }
+  
+  .FAQ__visible {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .FAQ__visible.open {
+    display: block;
+  }
+  
+  @media (max-width: 767px) {
+    .FAQ__accordian {
+      width: 100%;
+    }
+  }
+  @media (min-width: 768px) {
+    .FAQ__accordian {
+      width: 50%;
+    }
+  }
+  

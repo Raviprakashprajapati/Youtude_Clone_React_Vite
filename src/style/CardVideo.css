@@ -1,0 +1,25 @@
+/* 
+@media ( 0px <= width <=575px){
+    .thumbnail{
+        width: 97%;
+    
+        border: 1px solid white;
+        position: relative;
+        left: 20px;
+        overflow: hidden;
+        
+    }
+
+    .setting{
+        position: absolute;
+        right: 1px;
+    }
+}
+
+@media (0px <= width <= 400px)
+{
+.video-duration {
+    position: absolute;
+    top: 189px;
+    font-size: 12px;
+}} */

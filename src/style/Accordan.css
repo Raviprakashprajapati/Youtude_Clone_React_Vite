@@ -1,0 +1,30 @@
+/* Accordion.css */
+.accordion-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .accordion-button {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    background-color: #f1f1f1;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .accordion-content {
+    display: none;
+    padding: 10px;
+  }
+  
+  .accordion-content p {
+    margin: 0;
+  }
+  
+  .accordion-item.open .accordion-content {
+    display: block;
+  }
+  

@@ -1,0 +1,17 @@
+
+body{
+   background-color: grey;
+
+}
+
+.fixed-button {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+ }
+
+ .hoverforbg:hover{
+   background-color: white;
+
+ }
+

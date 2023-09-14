@@ -1,0 +1,70 @@
+
+.video-duration-container{
+    position: relative;
+}
+
+.video-duration{
+    position: absolute;
+    right: 3px;
+    top: 149px;
+    background-color: black;
+    color: white;
+    padding: 1.8px;
+    
+}
+
+.search-container{
+    position: relative;
+}
+
+.ul-container{
+    position: absolute;
+    left: -32px;
+}
+.card{
+    --bs-card-inner-border-radius: calc(-12.625rem - 1px);
+}
+
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+    
+ }
+
+
+
+ .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  @media (min-width: 768px) 
+{ 
+  .search-container{
+    position: relative;
+    left: 25%;
+}
+
+
+   .video-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* gap: 20px; */
+  }
+
+
+}
+  
+  .video-card {
+    width: 100%;
+    /* Additional styling for the video card */
+  }
+  
+  .fixed-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
