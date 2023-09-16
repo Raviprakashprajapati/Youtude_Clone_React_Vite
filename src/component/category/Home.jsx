@@ -5,12 +5,14 @@ import CardVideo from "../detail/CardVideo";
 import Loader from "../utils/Loader";
 import Context from "../utils/Context";
 
+
 function Home() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [nextUrl, setNextUrl] = useState("");
   const {visibility,setVisibility} = useContext(Context);
   let key = import.meta.env.VITE_API_KEY;
+console.log("api key = ",key);
 
   useEffect(() => {
     fetchData();

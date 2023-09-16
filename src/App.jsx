@@ -12,6 +12,8 @@ import Gaming from "./component/category/Gaming";
 import Movie from "./component/category/Movie";
 import Music from "./component/category/Music";
 import SearchBar from "./component/category/SearchBar";
+import HistoryUser from "./component/method/HistoryUser";
+import CommunityDetail from "./component/detail/CommunityDetail";
 
 function App() {
   
@@ -21,6 +23,7 @@ function App() {
   const [likeVideo,setLikeVideo] = useState([])
   const [saveVideo,setSaveVideo] = useState([])
   const [visibility,setVisibility] = useState(false)
+  const [historyUser,setHistoryUser] = useState([])
 
   let key =  import.meta.env.VITE_API_KEY
   // console.log(key)
@@ -35,7 +38,7 @@ function App() {
 
   return (
     <Context.Provider value={{inputValueFromChild,setInputValueFromChild,userChannel,setUserChannel,likeVideo,setLikeVideo,saveVideo,setSaveVideo,visibility,setVisibility
-  
+      ,historyUser,setHistoryUser
     }}>
       
       
@@ -50,10 +53,12 @@ function App() {
           <Route path="/gaming" element={<Gaming/>} />
           <Route path="/music" element={<Music/>} />
           <Route path="/video/:id" element={<VideoDetail/>} />
+          
           <Route path="/channel/:id" element={<YoutudeDetail/>} />
           <Route path="/subcription" element={<UserSubcriberChannel/>} />
           <Route path="/like" element={<LinkVideo/>} />
           <Route path="/save" element={<SaveVideo/>} />
+          <Route path="/history" element={<HistoryUser/>} />
           <Route path="/*" element={<h4 className="text-center">404 Page</h4>} />
         </Routes>
       </BrowserRouter>

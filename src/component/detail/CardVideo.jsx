@@ -31,7 +31,15 @@ function CardVideo({
       <Link to={`/video/${videoId}`} style={{ textDecoration: "none" }}>
           <div className="video-duration-container">
             <Card.Img className="thumbnail" variant="top" src={thumbnail} />
-            <p className="video-duration video-length" style={{ fontSize: "10px" }}>
+            <p   style={{
+      fontSize: "10px",
+      position: "absolute",
+      bottom: "0",
+      right: "0",
+      backgroundColor: "rgba(0, 0, 0, 0.7)",
+      color: "white",
+      padding: "4px 8px",
+    }} >
               {videoLength}
             </p>
           </div>
@@ -104,7 +112,7 @@ function CardVideo({
             </Card.Text>
           </Card.Body>
         </Card>
-      {/* </Link> */}
+      
     </div>
   );
 }

@@ -124,6 +124,53 @@ function Navbar({ onButtonClick }) {
               </Button>{" "}
             </Link>
 
+           
+
+          
+
+            <Link to="/gaming">
+              <Button
+                style={{
+                  fontSize: "15px",
+                  padding: "8px 25px",
+                  marginBottom: "10px",
+                }}
+                variant="dark"
+                link
+              >
+                Marvel
+              </Button>{" "}
+            </Link>
+
+            <Link to="/music">
+              <Button
+                style={{
+                  fontSize: "15px",
+                  padding: "8px 25px",
+                  marginBottom: "10px",
+                }}
+                variant="dark"
+                link
+              >
+                Music
+              </Button>{" "}
+            </Link>
+
+            <Link to="/movie">
+              <Button
+                style={{
+                  fontSize: "15px",
+                  padding: "8px 25px",
+                  marginBottom: "10px",
+                }}
+                variant="dark"
+                link
+              >
+                Movies
+              </Button>{" "}
+            </Link>
+
+
             <Link to="/subcription">
               <Button
                 style={{
@@ -195,13 +242,7 @@ function Navbar({ onButtonClick }) {
               </Button>{" "}
             </Link>
 
-            {/* <Link to="/gaming">
-              <Button style={{fontSize:"20px",padding:"5px 27px",marginBottom:"10px"}}  variant="dark" link>
-                Trending
-              </Button>{" "}
-            </Link> */}
-
-            <Link to="/gaming">
+            <Link to="/history">
               <Button
                 style={{
                   fontSize: "15px",
@@ -211,37 +252,20 @@ function Navbar({ onButtonClick }) {
                 variant="dark"
                 link
               >
-                Marvel
+                <b>
+                <svg style={{width:"22px"}}  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#eab308" d="M12 21q-3.45 0-6.013-2.288T3.05 13H5.1q.35 2.6 2.313 4.3T12 19q2.925 0 4.963-2.038T19 12q0-2.925-2.038-4.963T12 5q-1.725 0-3.225.8T6.25 8H9v2H3V4h2v2.35q1.275-1.6 3.113-2.475T12 3q1.875 0 3.513.713t2.85 1.924q1.212 1.213 1.925 2.85T21 12q0 1.875-.713 3.513t-1.924 2.85q-1.213 1.212-2.85 1.925T12 21Zm2.8-4.8L11 12.4V7h2v4.6l3.2 3.2l-1.4 1.4Z"/>
+</svg>
+
+                 {" "}
+                  History
+                </b>
               </Button>{" "}
             </Link>
 
-            <Link to="/music">
-              <Button
-                style={{
-                  fontSize: "15px",
-                  padding: "8px 25px",
-                  marginBottom: "10px",
-                }}
-                variant="dark"
-                link
-              >
-                Music
-              </Button>{" "}
-            </Link>
 
-            <Link to="/movie">
-              <Button
-                style={{
-                  fontSize: "15px",
-                  padding: "8px 25px",
-                  marginBottom: "10px",
-                }}
-                variant="dark"
-                link
-              >
-                Movies
-              </Button>{" "}
-            </Link>
+
+
           </div>
           <p style={{position:"fixed",bottom:"0px",fontSize:"12px"}} >Created By - <a href="https://raviprakashprajapati.netlify.app/" target="blank" className=" text-white " ><b>Ravi</b></a> <br />
           </p>
