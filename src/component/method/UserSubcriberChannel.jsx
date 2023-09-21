@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import Context from "../utils/Context";
 import "../../style/App.css";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 function UserSubcriberChannel() {
   const { userChannel, visibility } = useContext(Context);
@@ -27,10 +29,22 @@ function UserSubcriberChannel() {
     width: `${imageWidth}px`,
   };
 
+  function handleDeleteHistory(){
+    if(localSubcribe.length)
+    {
+      // localStorage.removeItem('userHistory')
+      localStorage.setItem("userSubcribe",JSON.stringify([]));
+      toast("All Subcribe Videos Clear");
+      window.location.reload();
+    
+    }}
+
   return (
     <div>
       <div>
-        <h4 className="text-center mt-2 bg-5 mb-4 "> Subcribe Channel</h4>
+        <h4 className="text-center mt-2 bg-5 mb-4 "> <svg style={{width:"25px"}} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5c-2 0-6 1.2-6 6v4l-2 2h5m3-12c4.8 0 6 4 6 6v4l2 2h-5M12 5V3M9 17v1c0 1 .6 3 3 3s3-2 3-3v-1m-6 0h6"/>
+</svg> {" "} Subcribe Channel</h4>
       </div>
 
 
@@ -59,6 +73,34 @@ function UserSubcriberChannel() {
         )
 
       }
+
+
+<ToastContainer position="top-right"
+      autoClose={500}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark" />
+
+
+      {
+        visibility?
+        (
+          <button className="btn btn-danger mx-3 mt-3 mb-3"style={{fontSize:"13px"}} onClick={handleDeleteHistory}  >
+             
+           <b> Clear </b>{" "}
+           <svg style={{width:"20px"}} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#ffffff" d="M19 15.59L17.59 17L14 13.41L10.41 17L9 15.59L12.59 12L9 8.41L10.41 7L14 10.59L17.59 7L19 8.41L15.41 12L19 15.59M22 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7c-.69 0-1.23-.36-1.59-.89L0 12l5.41-8.12C5.77 3.35 6.31 3 7 3h15m0 2H7l-4.72 7L7 19h15V5Z"/>
+            </svg> 
+            </button>
+        )
+        :null
+      }
+
 
      
 

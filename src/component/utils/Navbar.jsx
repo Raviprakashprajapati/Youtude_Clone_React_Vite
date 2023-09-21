@@ -105,7 +105,7 @@ function Navbar({ onButtonClick }) {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             {/* <b style={{ color: "red" }}>YOUTUDE BAR</b> */}
-            <img src={logooffcanva} style={{width:"150px"}} alt="" />
+            <img src={logooffcanva} style={{ width: "150px" }} alt="" />
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
@@ -124,11 +124,7 @@ function Navbar({ onButtonClick }) {
               </Button>{" "}
             </Link>
 
-           
-
-          
-
-            <Link to="/gaming">
+            <Link to="/trending">
               <Button
                 style={{
                   fontSize: "15px",
@@ -138,7 +134,7 @@ function Navbar({ onButtonClick }) {
                 variant="dark"
                 link
               >
-                Marvel
+                Trending
               </Button>{" "}
             </Link>
 
@@ -170,7 +166,6 @@ function Navbar({ onButtonClick }) {
               </Button>{" "}
             </Link>
 
-
             <Link to="/subcription">
               <Button
                 style={{
@@ -183,13 +178,17 @@ function Navbar({ onButtonClick }) {
               >
                 <b>
                   <svg
-                    style={{ width: "20px" }}
+                    style={{ width: "22px" }}
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill="#f9c639"
-                      d="M7 1h10v2h4v9h-2V5h-2v2H7V5H5v16h7v2H3V3h4V1Zm2 4h6V3H9v2Zm11 8.75v1.376c.715.184 1.352.56 1.854 1.072l1.193-.689l1 1.732l-1.192.688a4.008 4.008 0 0 1 0 2.142l1.192.688l-1 1.732l-1.193-.689A4 4 0 0 1 20 22.874v1.376h-2v-1.376a3.996 3.996 0 0 1-1.854-1.072l-1.193.689l-1-1.732l1.192-.688a4.004 4.004 0 0 1 0-2.142l-1.192-.688l1-1.732l1.193.689A3.996 3.996 0 0 1 18 15.126V13.75h2Zm-2.751 4.283a1.991 1.991 0 0 0-.25.967c0 .35.091.68.25.967l.036.063a1.999 1.999 0 0 0 3.43 0l.036-.063A1.99 1.99 0 0 0 21 19c0-.35-.09-.68-.249-.967l-.036-.063a1.999 1.999 0 0 0-3.43 0l-.036.063Z"
+                      fill="none"
+                      stroke="#eab308"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 5c-2 0-6 1.2-6 6v4l-2 2h5m3-12c4.8 0 6 4 6 6v4l2 2h-5M12 5V3M9 17v1c0 1 .6 3 3 3s3-2 3-3v-1m-6 0h6"
                     />
                   </svg>{" "}
                   Subscriptions
@@ -234,9 +233,16 @@ function Navbar({ onButtonClick }) {
                 link
               >
                 <b>
-                <svg style={{width:"22px"}} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path fill="none" stroke="#eab308" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5c-2 0-6 1.2-6 6v4l-2 2h5m3-12c4.8 0 6 4 6 6v4l2 2h-5M12 5V3M9 17v1c0 1 .6 3 3 3s3-2 3-3v-1m-6 0h6"/>
-</svg>{" "}
+                  <svg
+                    style={{ width: "20px" }}
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill="#f9c639"
+                      d="M7 1h10v2h4v9h-2V5h-2v2H7V5H5v16h7v2H3V3h4V1Zm2 4h6V3H9v2Zm11 8.75v1.376c.715.184 1.352.56 1.854 1.072l1.193-.689l1 1.732l-1.192.688a4.008 4.008 0 0 1 0 2.142l1.192.688l-1 1.732l-1.193-.689A4 4 0 0 1 20 22.874v1.376h-2v-1.376a3.996 3.996 0 0 1-1.854-1.072l-1.193.689l-1-1.732l1.192-.688a4.004 4.004 0 0 1 0-2.142l-1.192-.688l1-1.732l1.193.689A3.996 3.996 0 0 1 18 15.126V13.75h2Zm-2.751 4.283a1.991 1.991 0 0 0-.25.967c0 .35.091.68.25.967l.036.063a1.999 1.999 0 0 0 3.43 0l.036-.063A1.99 1.99 0 0 0 21 19c0-.35-.09-.68-.249-.967l-.036-.063a1.999 1.999 0 0 0-3.43 0l-.036.063Z"
+                    />
+                  </svg>{" "}
                   Save Videos
                 </b>
               </Button>{" "}
@@ -253,12 +259,37 @@ function Navbar({ onButtonClick }) {
                 link
               >
                 <b>
-                <svg style={{width:"22px"}}  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path fill="#eab308" d="M12 21q-3.45 0-6.013-2.288T3.05 13H5.1q.35 2.6 2.313 4.3T12 19q2.925 0 4.963-2.038T19 12q0-2.925-2.038-4.963T12 5q-1.725 0-3.225.8T6.25 8H9v2H3V4h2v2.35q1.275-1.6 3.113-2.475T12 3q1.875 0 3.513.713t2.85 1.924q1.212 1.213 1.925 2.85T21 12q0 1.875-.713 3.513t-1.924 2.85q-1.213 1.212-2.85 1.925T12 21Zm2.8-4.8L11 12.4V7h2v4.6l3.2 3.2l-1.4 1.4Z"/>
-</svg>
-
-                 {" "}
+                  <svg
+                    style={{ width: "22px" }}
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill="#eab308"
+                      d="M12 21q-3.45 0-6.013-2.288T3.05 13H5.1q.35 2.6 2.313 4.3T12 19q2.925 0 4.963-2.038T19 12q0-2.925-2.038-4.963T12 5q-1.725 0-3.225.8T6.25 8H9v2H3V4h2v2.35q1.275-1.6 3.113-2.475T12 3q1.875 0 3.513.713t2.85 1.924q1.212 1.213 1.925 2.85T21 12q0 1.875-.713 3.513t-1.924 2.85q-1.213 1.212-2.85 1.925T12 21Zm2.8-4.8L11 12.4V7h2v4.6l3.2 3.2l-1.4 1.4Z"
+                    />
+                  </svg>{" "}
                   History
+                </b>
+              </Button>{" "}
+            </Link>
+
+            
+            <Link to="/help">
+              <Button
+                style={{
+                  fontSize: "15px",
+                  padding: "8px 25px",
+                  marginBottom: "10px",
+                }}
+                variant="dark"
+                link
+              >
+                <b>
+                <svg style={{width:"22px"}} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#ffffff" d="M11.95 18q.525 0 .888-.363t.362-.887q0-.525-.362-.888t-.888-.362q-.525 0-.887.363t-.363.887q0 .525.363.888t.887.362Zm-.9-3.85h1.85q0-.825.188-1.3t1.062-1.3q.65-.65 1.025-1.238T15.55 8.9q0-1.4-1.025-2.15T12.1 6q-1.425 0-2.313.75T8.55 8.55l1.65.65q.125-.45.563-.975T12.1 7.7q.8 0 1.2.438t.4.962q0 .5-.3.938t-.75.812q-1.1.975-1.35 1.475t-.25 1.825ZM12 22q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22Zm0-2q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20Zm0-8Z"/>
+</svg>{" "}
+                  Help
                 </b>
               </Button>{" "}
             </Link>
@@ -267,7 +298,18 @@ function Navbar({ onButtonClick }) {
 
 
           </div>
-          <p style={{position:"fixed",bottom:"0px",fontSize:"12px"}} >Created By - <a href="https://raviprakashprajapati.netlify.app/" target="blank" className=" text-white " ><b>Ravi</b></a> <br />
+
+
+          <p style={{ position: "fixed", bottom: "0px", fontSize: "12px" }}>
+            Created By -{" "}
+            <a
+              href="https://raviprakashprajapati.netlify.app/"
+              target="blank"
+              className=" text-white "
+            >
+              <b>Ravi</b>
+            </a>{" "}
+            <br />
           </p>
         </Offcanvas.Body>
       </Offcanvas>

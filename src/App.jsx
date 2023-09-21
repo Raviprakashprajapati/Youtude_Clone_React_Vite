@@ -14,6 +14,8 @@ import Music from "./component/category/Music";
 import SearchBar from "./component/category/SearchBar";
 import HistoryUser from "./component/method/HistoryUser";
 import CommunityDetail from "./component/detail/CommunityDetail";
+import Trending from "./component/category/Trending";
+import Help from "./component/method/Help";
 
 function App() {
   
@@ -52,6 +54,7 @@ function App() {
           <Route path="/movie" element={<Movie/>} />
           <Route path="/gaming" element={<Gaming/>} />
           <Route path="/music" element={<Music/>} />
+          <Route path="/trending" element={<Trending/>} />
           <Route path="/video/:id" element={<VideoDetail/>} />
           
           <Route path="/channel/:id" element={<YoutudeDetail/>} />
@@ -59,6 +62,7 @@ function App() {
           <Route path="/like" element={<LinkVideo/>} />
           <Route path="/save" element={<SaveVideo/>} />
           <Route path="/history" element={<HistoryUser/>} />
+          <Route path="/help" element={<Help/>} />
           <Route path="/*" element={<h4 className="text-center">404 Page</h4>} />
         </Routes>
       </BrowserRouter>

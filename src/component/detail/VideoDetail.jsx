@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import "../../style/Home.css";
 import "../../style/App.css";
 import Card from "react-bootstrap/Card";
-
 import "../../style/VideoDetail.css";
 import Accordion from "react-bootstrap/Accordion";
 import { VscAccount } from "react-icons/vsc";
@@ -13,7 +12,9 @@ import ReactPlayer from "react-player";
 import "../../style/Accordan.css";
 import "../../style/Uiverse.css"
 import Context from "../utils/Context";
-
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+import YouTube from "react-youtube";
 
 
 function VideoDetail() {
@@ -210,28 +211,23 @@ try {
   function handleUserSubcribe(channelId, subscribe, imageUser, nameOfChannel) {
 
     let allUser = { userChannelId: channelId, UserSubscribe: subscribe, UserImageUser: imageUser, UserName: nameOfChannel };
-    // console.log("channelId: " + channelId);
   
-    const channelIdExistsIndex = userChannel.findIndex((channel) => channel.userChannelId === allUser.userChannelId);
   
+    const localExist = JSON.parse(localStorage.getItem("userSubcribe")) || []
+
+    const channelIdExistsIndex = localExist.findIndex((channel) => channel.userChannelId === allUser.userChannelId);
+
     if (channelIdExistsIndex === -1) {
-      const updatesubdata = [...userChannel,allUser]
-      // Channel is not subscribed, add it to the userChannel array
-      setUserChannel([...userChannel, allUser]);
-      alert("Channel Subscribed");
-
-      localStorage.setItem('userSubcribe',JSON.stringify(updatesubdata))
+      localExist.push(allUser)
+      toast("Subscribed");
+      localStorage.setItem('userSubcribe',JSON.stringify(localExist))
     } 
-
     else
     {
       // Channel is already subscribed, remove it from the userChannel array
-      const updatedUserChannel = [...userChannel];
-      updatedUserChannel.splice(channelIdExistsIndex, 1);
-      setUserChannel(updatedUserChannel);
-      alert("Unsubscribed from the Channel");
-   
-      localStorage.setItem('userSubcribe',JSON.stringify(updatedUserChannel))
+      localExist.splice(channelIdExistsIndex,1);
+      toast("UnSubscribed");
+      localStorage.setItem('userSubcribe',JSON.stringify(localExist))
     }
 
    
@@ -241,25 +237,19 @@ try {
   
   function handleLike(likeTitle, likeVideoId, likeThumbnail, likeName, likeChannelId) {
     let allInfo = { likeTitle, likeVideoId, likeThumbnail, likeName, likeChannelId };
-    const likeExistsIndex = likeVideo.findIndex((video) => video.likeVideoId === allInfo.likeVideoId);
+
+    const localExist = JSON.parse(localStorage.getItem("userLike")) || []
+    const likeExistsIndex = localExist.findIndex((video) => video.likeVideoId === allInfo.likeVideoId);
   
     if (likeExistsIndex === -1) {
-      // Video is not liked, add it to the likeVideo array
-      const updatedData = [...likeVideo,allInfo]
-      setLikeVideo([...likeVideo, allInfo]);
-      alert("👍 Liked");
-     
-      localStorage.setItem('userLike',JSON.stringify(updatedData))
+      localExist.push(allInfo)
+      toast("👍 Like");
+      localStorage.setItem('userLike',JSON.stringify(localExist))
     } else {
       // Video is already liked, remove it from the likeVideo array
-      
-      
-      const updatedLikeVideo = [...likeVideo];
-      updatedLikeVideo.splice(likeExistsIndex, 1);
-      setLikeVideo(updatedLikeVideo);
-      alert("👎 Unliked");
-    
-      localStorage.setItem('userLike',JSON.stringify(updatedLikeVideo))
+      localExist.splice(likeExistsIndex,1)
+      toast("👎 unLiked");
+      localStorage.setItem('userLike',JSON.stringify(localExist))
     }
   }
 
@@ -277,31 +267,61 @@ try {
           saveChannelImage,
           saveChannelName,
         };
-
+        const localExist = JSON.parse(localStorage.getItem("userSaveVideo")) || []
         // Check if the video is already saved
-        const videoExistsIndex = saveVideo.findIndex((video) => video.saveVideoId === videoInfo.saveVideoId);
+        const videoExistsIndex = localExist.findIndex((video) => video.saveVideoId === videoInfo.saveVideoId);
 
         if (videoExistsIndex === -1) {
-          const updateSavevideo = [...saveVideo,videoInfo]
-          // Video is not saved, add it to the saveVideo array
-          setSaveVideo([...saveVideo, videoInfo]);
-          alert("Video Saved");
-         
-          localStorage.setItem('userSaveVideo',JSON.stringify(updateSavevideo))
-        } else {
-          // Video is already saved, remove it from the saveVideo array
-          const updatedSaveVideo = [...saveVideo];
-          updatedSaveVideo.splice(videoExistsIndex, 1);
-          setSaveVideo(updatedSaveVideo);
-          alert("Video Removed from Saved");
           
-          localStorage.setItem('userSaveVideo',JSON.stringify(updatedSaveVideo))
+          localExist.push(videoInfo)
+          toast("Saved");
+          localStorage.setItem('userSaveVideo',JSON.stringify(localExist))
+        } else {
+          localExist.splice(videoExistsIndex,1);
+          toast("unSaved");
+          
+          localStorage.setItem('userSaveVideo',JSON.stringify(localExist))
         }
 
         
     
   }
+
+
+
+  // youtde video players
+  const opts = {
+    height: '330',
+    width: '100%',
+    playerVars: {
+      autoplay: 1, // Change to 1 if you want the video to autoplay
+    },
+  };
+
+  const optsLaptop = {
+    height: '300',
+    width: '100%',
+    playerVars: {
+      autoplay: 1, // Change to 1 if you want the video to autoplay
+    },
+  };
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -312,7 +332,20 @@ try {
   return (
 
     <>
+
+    <ToastContainer position="top-right"
+      autoClose={500}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark" />
+
     {
+      // visibility 
       visibility ?
       (
         
@@ -329,12 +362,13 @@ try {
               <Card className="video-card bg-dark " key={index}>
                 <div className="video-duration-container">
                   {/* <div className="video-container-video" > */}
-                  <ReactPlayer
+                  <YouTube videoId={id} opts={opts} />
+                  {/* <ReactPlayer
                     url={`https://www.youtube.com/watch?v=${id}`}
                     controls
                     width="100%"
                     height="100%"
-                  />
+                  /> */}
 
                   {/* </div> */}
                 </div>
@@ -371,7 +405,7 @@ try {
                     <div className=" d-flex gap-3 align-items-center ">
                       <div>
                         {/* line btn */}
-                      <button class="cssbuttons-io" onClick={()=>handleLike(result?.title,result?.videoId,result?.thumbnails?.[1]?.url,result?.author?.title,result?.author?.channelId)} >
+                      <button class="cssbuttons-io" onClick={()=>handleLike(result?.title,result?.videoId,result?.thumbnails?.[3]?.url,result?.author?.title,result?.author?.channelId)} >
                           <span><svg width="512" height="512" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path fill="#000000" d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/>
                         </svg> Like</span>
@@ -381,7 +415,7 @@ try {
                         <div className="ml-2" >
                           {/* save button */}
                         <button class="cssbuttons-io" onClick={()=>handleSave(
-                          result?.thumbnails?.[2]?.url,
+                          result?.thumbnails?.[3]?.url,
                           result?.title,
                           result?.videoId,
                           result?.stats?.views,
@@ -410,7 +444,7 @@ try {
                         onClick={handleIndex}
                         className="bg-dark"
                         flush
-                        defaultActiveKey="0"
+                        defaultActiveKey={null}
                       >
                         <Accordion.Item eventKey="0" className="bg-dark">
                           <Accordion.Header
@@ -522,7 +556,7 @@ try {
                         <Accordion
                           onClick={handleIndex}
                           style={{ zIndex: "1000", maxWidth: "100%" }}
-                          defaultActiveKey="0"
+                          defaultActiveKey={null}
                           className="bg-dark"
                         >
                           <Accordion.Item
@@ -605,20 +639,7 @@ try {
 
 
 
-
-
-
-
-
-
-
       <>
-
-
-
-
-
-
 
 
 
@@ -632,12 +653,13 @@ try {
                 <Card className="video-card bg-dark " key={index}>
                   <div className="video-duration-container">
                     {/* <div className="video-container-video" > */}
-                    <ReactPlayer
+                    <YouTube videoId={id} opts={optsLaptop} />
+                    {/* <ReactPlayer
                       url={`https://www.youtube.com/watch?v=${id}`}
                       controls
                       width="100%"
                       height="100%"
-                    />
+                    /> */}
 
                     {/* </div> */}
                   </div>
@@ -672,7 +694,7 @@ try {
                       <div className=" d-flex gap-3 align-items-center ">
                       <div>
                         {/* line btn */}
-                      <button class="cssbuttons-io" onClick={()=>handleLike(result?.title,result?.videoId,result?.thumbnails?.[1]?.url,result?.author?.title,result?.author?.channelId)} >
+                      <button class="cssbuttons-io" onClick={()=>handleLike(result?.title,result?.videoId,result?.thumbnails?.[3]?.url,result?.author?.title,result?.author?.channelId)} >
                           <span><svg width="512" height="512" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path fill="#000000" d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/>
                         </svg> Like</span>
@@ -682,7 +704,7 @@ try {
                         <div className="ml-2" >
                           {/* save button */}
                         <button class="cssbuttons-io" onClick={()=>handleSave(
-                          result?.thumbnails?.[2]?.url,
+                          result?.thumbnails?.[3]?.url,
                           result?.title,
                           result?.videoId,
                           result?.stats?.views,
@@ -791,7 +813,7 @@ try {
                   right: "20px",
                 }}
               >
-                <Accordion defaultActiveKey="0">
+                <Accordion       defaultActiveKey={null}>
                   <Accordion.Item eventKey="0" className="bg-dark text-white">
                     <Accordion.Header className="bg-dark text-white">
                       Description text here...
@@ -876,7 +898,21 @@ try {
 
 
 
-          <br /><br /> <br />
+          {
+            isMobile?
+            <br />
+            :null
+          }
+           {
+            isMobile?
+            <br />
+            :null
+          }
+           {
+            isMobile?
+            <br />
+            :null
+          }
 
 
 
@@ -889,10 +925,10 @@ try {
       
       <div
         className=" container-fluid"
-        style={{ marginTop: "500px", zIndex: "-1" }}
+        style={{ marginTop: "700px", zIndex: "-1" }}
       >
         <div className="row d-flex justify-content-center align-items-center">
-          <h3 className="text-center">Related videos</h3>
+          <h3 className="text-center mb-3">Related videos</h3>
 
           {otherVideo &&
             otherVideo.map((result, index) => {

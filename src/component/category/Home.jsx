@@ -12,7 +12,9 @@ function Home() {
   const [nextUrl, setNextUrl] = useState("");
   const {visibility,setVisibility} = useContext(Context);
   let key = import.meta.env.VITE_API_KEY;
+  let key2 = import.meta.env.VITE_API_OMAR;
 console.log("api key = ",key);
+console.log("api key2 = ",key2);
 
   useEffect(() => {
     fetchData();
